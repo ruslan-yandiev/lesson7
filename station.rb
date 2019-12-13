@@ -15,8 +15,8 @@ class Station
     @@all << self
   end
 
-  def train_collect(&block)
-    yield
+  def trains_incpect(&block)
+    @trains.each { |train| yield(train) } if block_given?
   end
 
   def valid?

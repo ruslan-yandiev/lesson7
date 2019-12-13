@@ -32,6 +32,10 @@ class Train
     end
   end
 
+  def carrige_incpect(&block)
+    @carrig.each { |train| yield(train) } if block_given?
+  end
+
   def valid?
     validate!
     true

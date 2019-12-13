@@ -4,6 +4,7 @@ class PassengerCarrig < Carrig
   def initialize(number)
     super(number)
     @occupied_place = 0
+    @free_places = 0
     amount_capacity
   end
 
@@ -14,7 +15,12 @@ class PassengerCarrig < Carrig
   end
 
   def take_places(amount)
-    @occupied_place += amount
+    if amount <= @passenger_capacity
+      @occupied_place += amount
+      @passenger_capacity - @occupied_place
+    else
+      puts "Вагон может вместить только #{@passenger_capacity}"
+    end
   end
 
   def show_places
@@ -22,10 +28,10 @@ class PassengerCarrig < Carrig
   end
 
   def show_free_places
-    puts "Свободно мест: #{@passenger_capacity - @occupied_place}"
+    puts "Свободно мест: #{free_places}"
   end
 
   def to_s
-    super + "вместимость: #{@passenger_capacity} человек"
+    super + "вместимость: #{@passenger_capacity} человек, зянято #{@occupied_place} мест, свободно мест: #{free_places}"
   end
 end
