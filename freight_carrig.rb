@@ -3,7 +3,26 @@ class FreightCarrig < Carrig
 
   def initialize(number)
     super(number)
-    @cargo_capacity = 5000
+    @weight = 0
+    amount_capacity
+  end
+
+  def amount_capacity
+    @cargo_capacity ||= 0
+    puts 'Укажите общую грузоподъемность в кг:'
+    @cargo_capacity = gets.chomp.to_i
+  end
+
+  def increase_weight(amount)
+    @weight += amount
+  end
+
+  def show_weight
+    puts "Вагон загружен на #{@weight}кг."
+  end
+
+  def show_free_weight
+    puts "Оставшаяся недогруженность: #{@cargo_capacity - @weight}кг."
   end
 
   def to_s

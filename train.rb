@@ -15,7 +15,7 @@ class Train
     @train_now = nil
     @sum = 0
     @carrig = []
-    self.name_manufacturer!
+    name_manufacturer!
     validate!
     register_instance
     get!

@@ -15,6 +15,10 @@ class Station
     @@all << self
   end
 
+  def train_collect(&block)
+    yield
+  end
+
   def valid?
     validate!
     true

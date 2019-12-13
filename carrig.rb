@@ -9,7 +9,7 @@ class Carrig
   def initialize(number)
     @number = number
     @status = false
-    self.name_manufacturer!
+    name_manufacturer!
     validate!
   end
 
