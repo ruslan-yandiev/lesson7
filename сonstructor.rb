@@ -96,6 +96,8 @@ class Сonstructor
     route!
     correct_route
     connect_carrig!
+    freight_carrig_filling
+    passenger_carrig_filling
     show_carr!
     cargo_carrige_delete!
     passenger_carrige_delete!
@@ -117,6 +119,44 @@ class Сonstructor
     \n#{CargoTrain.instances} грузовых поезда.
     \n#{Route.instances} маршрута.
     \n#{Station.instances} станции."
+  end
+
+  def freight_carrig_filling
+    puts 'Хотите загрузить грузовой вагон?(да/нет)'
+    yes_or_no = gets.chomp
+
+    if yes_or_no == 'да'
+      @f_carrigs.each_with_index { |carrig, index| puts "#{index} - #{carrig}" }
+
+      puts 'Укажите вагон который нужно загрузить:'
+      number = gets.chomp.to_i
+
+      puts 'Укажите вес груза:'
+      weight = gets.chomp.to_i
+
+      @f_carrigs[number].increase_weight(weight) if @f_carrigs[number]
+
+      self.freight_carrig_filling
+    end
+  end
+
+  def passenger_carrig_filling
+    puts 'Хотите занять людьми пассажирский вагон?(да/нет)'
+    yes_or_no = gets.chomp
+
+    if yes_or_no == 'да'
+      @p_carrigs.each_with_index { |carrig, index| puts "#{index} - #{carrig}" }
+
+      puts 'Укажите вагон который нужно занять:'
+      number = gets.chomp.to_i
+
+      puts 'Укажите колличество человек:'
+      amount = gets.chomp.to_i
+
+      @p_carrigs[number].take_places(amount) if @p_carrigs[number]
+
+      self.passenger_carrig_filling
+    end
   end
 
   def station_info_train

@@ -14,8 +14,10 @@ class FreightCarrig < Carrig
     @cargo_capacity = gets.chomp.to_i
   end
 
-  def increase_weight(amount)
-    if amount <= @cargo_capacity
+  def increase_weight(weight)
+    if @weight + amount >  @cargo_capacity
+      puts 'Перегруз'
+    elsif amount <= @cargo_capacity
       @weight += amount
       @free_weight = @cargo_capacity - @weight
     else

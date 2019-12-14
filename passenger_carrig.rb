@@ -15,7 +15,9 @@ class PassengerCarrig < Carrig
   end
 
   def take_places(amount)
-    if amount <= @passenger_capacity
+    if @occupied_place + amount >  @passenger_capacity
+      puts 'нехватает мест в вагоне!'
+    elsif amount <= @passenger_capacity
       @occupied_place += amount
       @passenger_capacity - @occupied_place
     else
