@@ -32,7 +32,7 @@ class Train
     end
   end
 
-  def carrige_incpect(&block)
+  def each_wagon
     @carrig.each { |carrig| yield(carrig) } if block_given?
   end
 
@@ -81,7 +81,7 @@ class Train
 
   def show_carriages
     puts self
-    carrige_incpect { |carrig| puts carrig }
+    each_wagon { |carrig| puts carrig }
   end
 
   def to_s

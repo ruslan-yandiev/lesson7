@@ -67,7 +67,11 @@ class Сonstructor
           puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
           \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
           numb = gets.chomp
-          object = @collection[number].new(numb)
+
+          puts 'Укажите общую грузоподъемность в кг:'
+          amounts = gets.chomp.to_i
+
+          object = @collection[number].new(numb, amounts)
           @f_carrigs << object
         rescue RuntimeError => e
           puts e
@@ -78,7 +82,11 @@ class Сonstructor
           puts "Введите номер.\nДопустимый формат: три буквы или цифры в любом порядке,
           \rнеобязательный дефис (может быть, а может нет) и еще 2 буквы или цифры после дефиса."
           numb = gets.chomp
-          object = @collection[number].new(numb)
+
+          puts 'Укажите общее колличество мест в вагоне:'
+          amounts = gets.chomp.to_i
+
+          object = @collection[number].new(numb, amounts)
           @p_carrigs << object
         rescue RuntimeError => e
           puts e
@@ -134,7 +142,7 @@ class Сonstructor
       puts 'Укажите вес груза:'
       weight = gets.chomp.to_i
 
-      @f_carrigs[number].increase_weight(weight) if @f_carrigs[number]
+      @f_carrigs[number].increase_amount(weight) if @f_carrigs[number]
 
       self.freight_carrig_filling
     end
@@ -153,7 +161,7 @@ class Сonstructor
       puts 'Укажите колличество человек:'
       amount = gets.chomp.to_i
 
-      @p_carrigs[number].take_places(amount) if @p_carrigs[number]
+      @p_carrigs[number].increase_amount(amount) if @p_carrigs[number]
 
       self.passenger_carrig_filling
     end

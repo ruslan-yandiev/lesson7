@@ -15,8 +15,8 @@ class Station
     @@all << self
   end
 
-  def trains_incpect(&block)
-    @trains.each { |train| yield(train) } if block_given?
+  def each_train(&block)
+    @trains.each { |train| block.(train) } if block_given?
   end
 
   def valid?
@@ -42,7 +42,7 @@ class Station
   end
 
   def show_trains_info
-    trains_incpect { |train| puts train }
+    each_train { |train| puts train }
   end
 
   def send_train(train)
@@ -50,6 +50,6 @@ class Station
     @trains.delete(train)
   end
 
-  protected :validate!, :trains_incpect
+  protected :validate!, :each_train
 end
 
