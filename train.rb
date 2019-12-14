@@ -33,7 +33,7 @@ class Train
   end
 
   def carrige_incpect(&block)
-    @carrig.each { |train| yield(train) } if block_given?
+    @carrig.each { |carrig| yield(carrig) } if block_given?
   end
 
   def valid?
@@ -80,8 +80,12 @@ class Train
   end
 
   def show_carriages
-    puts "Поезд тип: #{self.class} №#{self.number}, произведен #{self.name_manufacturer} присоединено вагонов: #{@carrig.size}"
-    @carrig.each { |carrig| puts carrig }
+    puts self
+    carrige_incpect { |carrig| puts carrig }
+  end
+
+  def to_s
+    "Поезд тип: #{self.class} №#{self.number}, произведен #{self.name_manufacturer} присоединено вагонов: #{@carrig.size}"
   end
 
   def show_route(arg = nil)
