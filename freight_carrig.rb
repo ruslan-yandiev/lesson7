@@ -15,10 +15,10 @@ class FreightCarrig < Carrig
   end
 
   def increase_weight(weight)
-    if @weight + amount >  @cargo_capacity
+    if @weight + weight >  @cargo_capacity
       puts 'Перегруз'
-    elsif amount <= @cargo_capacity
-      @weight += amount
+    elsif weight <= @cargo_capacity
+      @weight += weight
       @free_weight = @cargo_capacity - @weight
     else
       puts "Вагон может вместить только #{cargo_capacity}кг."

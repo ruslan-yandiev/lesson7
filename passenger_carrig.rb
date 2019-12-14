@@ -34,6 +34,6 @@ class PassengerCarrig < Carrig
   end
 
   def to_s
-    super + "вместимость: #{@passenger_capacity} человек, зянято #{@occupied_place} мест, свободно мест: #{free_places}"
+    super + "вместимость: #{@passenger_capacity} человек, зянято #{@occupied_place} мест, свободно мест: #{@free_places}"
   end
 end

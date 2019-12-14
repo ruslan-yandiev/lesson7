@@ -164,7 +164,7 @@ class Сonstructor
     yes_or_no = gets.chomp
 
     if yes_or_no == 'да'
-      @stations.each_with_index { |station, index| puts "#{index} - #{station}" }
+      @stations.each_with_index { |station, index| puts "#{index} - #{station.name}" }
 
       print 'Укажите станцию:'
       number = gets.chomp.to_i
