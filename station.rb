@@ -41,13 +41,8 @@ class Station
     puts "На станцию #{name} прибыл поезд: #{train.class},  №#{train.number}, произведенный компанией #{train.name_manufacturer}"
   end
 
-  def show_trains_info(type = nil)
-    if type
-      @trains.each { |train| puts "number train: #{train.number}, type of train: #{train.class}, вагонов: #{train.show_carriages}" }
-    else
-      puts "На станции #{name}:"
-      @trains.each.with_index(1) { |train, index| puts "#{index}. находится поезд #{train.class} №#{train.number}" }
-    end
+  def show_trains_info
+    trains_incpect { |train| puts train }
   end
 
   def send_train(train)
@@ -55,6 +50,6 @@ class Station
     @trains.delete(train)
   end
 
-  protected :validate!
+  protected :validate!, :trains_incpect
 end
 

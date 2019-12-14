@@ -102,8 +102,10 @@ class Сonstructor
     show_carr!
     cargo_train_add_route
     passenger_train_add_route
+    station_info_train
     go_go
     go_back
+    station_info_train
     find!
     show_amount_object
   end
@@ -115,6 +117,22 @@ class Сonstructor
     \n#{CargoTrain.instances} грузовых поезда.
     \n#{Route.instances} маршрута.
     \n#{Station.instances} станции."
+  end
+
+  def station_info_train
+    puts 'Хотите отобразить поезда на станции?(да/нет)?'
+    yes_or_no = gets.chomp
+
+    if yes_or_no == 'да'
+      @stations.each_with_index { |station, index| puts "#{index} - #{station}" }
+
+      print 'Укажите станцию:'
+      number = gets.chomp.to_i
+
+      @stations[number].show_trains_info if @stations[number]
+
+      self.station_info_train
+    end
   end
 
   def find!
