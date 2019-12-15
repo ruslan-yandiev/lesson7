@@ -158,7 +158,7 @@ class Сonstructor
       puts 'Укажите вагон который нужно занять:'
       number = gets.chomp.to_i
 
-      @p_carrigs[number].increase_amount(1) if @p_carrigs[number]
+      @p_carrigs[number].increase_amount if @p_carrigs[number]
 
       self.passenger_carrig_filling
     end

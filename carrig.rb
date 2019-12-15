@@ -10,7 +10,6 @@ class Carrig
     @number = number
     @amount = amount
     @amount_now = 0
-    @free_amount = 0
     @status = false
     name_manufacturer!
     validate!
@@ -21,14 +20,14 @@ class Carrig
       puts 'Недостаточно места в вагоне!!!'
     elsif amount <= @amount
       @amount_now += amount
-      free_amount!
+      free_amount
     else
       puts "Вагон может вместить только #{@amount} !!!"
     end
   end
 
-  def free_amount!
-    @free_amount = @amount - @amount_now
+  def free_amount
+    @amount - @amount_now
   end
 
   def show_amount_now
@@ -36,7 +35,7 @@ class Carrig
   end
 
   def show_free_amount
-    @free_amount
+    free_amount
   end
 
   def valid?
