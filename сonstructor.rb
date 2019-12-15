@@ -149,7 +149,7 @@ class Сonstructor
   end
 
   def passenger_carrig_filling
-    puts 'Хотите занять людьми пассажирский вагон?(да/нет)'
+    puts 'Хотите занять место в пассажирском вагоне?(да/нет)'
     yes_or_no = gets.chomp
 
     if yes_or_no == 'да'
@@ -158,10 +158,7 @@ class Сonstructor
       puts 'Укажите вагон который нужно занять:'
       number = gets.chomp.to_i
 
-      puts 'Укажите колличество человек:'
-      amount = gets.chomp.to_i
-
-      @p_carrigs[number].increase_amount(amount) if @p_carrigs[number]
+      @p_carrigs[number].increase_amount(1) if @p_carrigs[number]
 
       self.passenger_carrig_filling
     end

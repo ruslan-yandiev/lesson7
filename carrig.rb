@@ -21,10 +21,14 @@ class Carrig
       puts 'Недостаточно места в вагоне!!!'
     elsif amount <= @amount
       @amount_now += amount
-      @free_amount = @amount - @amount_now
+      free_amount!
     else
       puts "Вагон может вместить только #{@amount} !!!"
     end
+  end
+
+  def free_amount!
+    @free_amount = @amount - @amount_now
   end
 
   def show_amount_now

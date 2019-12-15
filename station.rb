@@ -15,8 +15,8 @@ class Station
     @@all << self
   end
 
-  def each_train(&block)
-    @trains.each { |train| block.(train) } if block_given?
+  def each_train
+    @trains.each { |train| yield(train) } if block_given?
   end
 
   def valid?
